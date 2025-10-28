@@ -14,14 +14,14 @@ export default function Header() {
   return (
     <header className="fixed md:max-w-[560px] w-[calc(100%-16px)] md:w-full top-4 left-1/2 -translate-x-1/2 z-50">
       <nav
-        className="flex items-center justify-between px-4 py-2.5 rounded-xl border border-gray-200 dark:border-[#2b2b2b] bg-white dark:bg-[#212121] 
+        className="flex items-center justify-between px-3 md:px-4 py-2 md:py-2.5 rounded-xl border border-gray-200 dark:border-[#2b2b2b] bg-white dark:bg-[#212121] 
       shadow-[0_1.2px_1.2px_rgba(10,10,10,0.06),0_5px_10px_rgba(10,10,10,0.04)]"
       >
         {/* Left Navigation */}
-        <div className="flex items-center gap-0">
+        <div className="flex items-center gap-0 -ml-1 md:ml-0">
           <Link
             href="/"
-            className={`relative p-3 rounded-full transition-all ${
+            className={`relative p-2 md:p-3 rounded-full transition-all ${
               isActive("/")
                 ? "bg-gray-100 dark:bg-[#2c2c2c]"
                 : "hover:bg-gray-50 dark:hover:bg-[#2c2c2c]/50"
@@ -48,7 +48,7 @@ export default function Header() {
           </Link>
           <Link
             href="/about"
-            className={`group relative p-3 rounded-full transition-all ${
+            className={`group relative p-2 md:p-3 rounded-full transition-all ${
               isActive("/about")
                 ? "bg-gray-100 dark:bg-[#2c2c2c]"
                 : "hover:bg-gray-50 dark:hover:bg-[#2c2c2c]/50"
@@ -75,7 +75,7 @@ export default function Header() {
           </Link>
           <Link
             href="/projects"
-            className={`group relative p-3 rounded-full transition-all ${
+            className={`group relative p-2 md:p-3 rounded-full transition-all ${
               isActive("/projects")
                 ? "bg-gray-100 dark:bg-[#2c2c2c]"
                 : "hover:bg-gray-50 dark:hover:bg-[#2c2c2c]/50"
@@ -102,7 +102,7 @@ export default function Header() {
           </Link>
           <Link
             href="/products"
-            className={`group relative p-3 rounded-full transition-all ${
+            className={`group relative p-2 md:p-3 rounded-full transition-all ${
               isActive("/products")
                 ? "bg-gray-100 dark:bg-[#2c2c2c]"
                 : "hover:bg-gray-50 dark:hover:bg-[#2c2c2c]/50"
@@ -127,13 +127,40 @@ export default function Header() {
               />
             </svg>
           </Link>
+          <Link
+            href="/blog"
+            className={`group relative p-2 md:p-3 rounded-full transition-all ${
+              isActive("/blog") || pathname?.startsWith("/blog/")
+                ? "bg-gray-100 dark:bg-[#2c2c2c]"
+                : "hover:bg-gray-50 dark:hover:bg-[#2c2c2c]/50"
+            }`}
+            aria-label="Blog"
+          >
+            <svg
+              className={`size-6 md:size-7 relative z-10 transition-opacity ${
+                isActive("/blog") || pathname?.startsWith("/blog/")
+                  ? "text-gray-900 dark:text-white opacity-100"
+                  : "text-gray-900 dark:text-white opacity-50"
+              }`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              />
+            </svg>
+          </Link>
         </div>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 md:gap-2 -mr-1 md:mr-0">
           <button
             onClick={toggleTheme}
-            className="group relative p-3 rounded-full hover:bg-gray-50 dark:hover:bg-[#2c2c2c]/50 transition-all"
+            className="group relative p-2 md:p-3 rounded-full hover:bg-gray-50 dark:hover:bg-[#2c2c2c]/50 transition-all"
             aria-label="Toggle theme"
           >
             <svg
@@ -150,7 +177,7 @@ export default function Header() {
               />
             </svg>
             <svg
-              className="w-5 h-5 block dark:hidden text-gray-900 dark:text-white opacity-80"
+              className="size-6 md:size-7 block dark:hidden text-gray-900 dark:text-white opacity-80"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -165,10 +192,10 @@ export default function Header() {
           </button>
           <Link
             href="/contact"
-            className="px-3 py-2 bg-gray-900 dark:bg-[#383838] hover:bg-black dark:hover:bg-[#424242] text-white text-sm font-semibold rounded-md transition-all shadow-sm flex items-center gap-2"
+            className="px-3 py-2 bg-gray-900 dark:bg-[#383838] hover:bg-black dark:hover:bg-[#424242] text-white text-xs md:text-sm font-semibold rounded-md transition-all shadow-sm flex items-center gap-1.5 md:gap-2"
           >
-            <div className="w-2 h-2 bg-green-500 rounded-full" />
-            <span>Hire Me</span>
+            <div className="size-1.5 md:size-2 bg-green-500 rounded-full" />
+            <span className="whitespace-nowrap">Hire Me</span>
           </Link>
         </div>
       </nav>
