@@ -32,7 +32,7 @@ export default function ContactPage() {
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 bg-gray-400 dark:bg-gray-500 rounded-full"></span>
             <h2 className="text-lg font-semibold text-gray-600 dark:text-gray-300">
-              Hire Me
+              Let's Talk
             </h2>
           </div>
           <div className="inline-flex items-center gap-1.5 px-3 py-3 md:py-1.5 bg-green-500/10 text-green-600 dark:text-green-400 text-sm font-semibold rounded-full">

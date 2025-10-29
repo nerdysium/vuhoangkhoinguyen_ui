@@ -16,15 +16,16 @@ export default function AboutPage() {
           </div>
 
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-            It's Me Brian
+            Hi, It's Nguyen
           </h1>
 
           <p className="text-gray-600 dark:text-gray-400 text-base leading-8 mb-8">
-            I'm Brian Do, a product designer with over 5 years of experience,
-            currently residing in Jakarta, Indonesia. I have a deep passion for
-            crafting purposeful interfaces and products. My main goal is to
-            bridge the divide between people and technology, transforming
-            intricate challenges into meaningful and seamless experiences.
+            I'm Nguyen Vu, a results-driven PM/PO with 4+ years accelerating
+            product launches in e-commerce and health tech, currently based in
+            Vietnam. Low ego, I work well with stakeholders and teams. My main
+            goal is to optimize user experiences, drive strategic growth, and
+            bridge business needs with technology, turning complex challenges
+            into seamless solutions.
           </p>
 
           <div className="bg-[#f5f5f5] dark:bg-[#1f1f1f] rounded-2xl overflow-hidden aspect-4/3">
@@ -39,17 +40,16 @@ export default function AboutPage() {
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
           More About Me
         </h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-8">
-          Brian Do holds a bachelor's degree in Graphic Design from a
-          prestigious university in the United States and has a relentless drive
-          for staying up-to-date with the latest technologies and design trends.
-          Actively involved in the design community, Brian regularly
-          participates in diverse design conferences and meetups. <br /> When
-          he's not immersed in design work, he finds solace in playing the
-          guitar and exploring new coffee shops in his local area. Brian firmly
-          believes in maintaining a healthy work-life balance, making sure to
-          take breaks and reenergize his creativity. In his spare time, he also
-          volunteers at a local animal shelter on weekends.
+        <p className="text-gray-600 dark:text-gray-400 leading-8 mb-8">
+          Nguyen Vu holds a Bachelor of Business Administration from Hoa Sen
+          University (2016-2020) and has certifications in Product Analytics,
+          Product-led Growth, TOEIC 910, and HSK 2. Additional education
+          includes Data Science and Artificial Intelligence from AI Vietnam
+          (2023-2024). Skills include design tools like Figma; project tools
+          like Jira, Confluence, Asana; methodologies like Agile, Scrum,
+          Waterfall; management skills in research, A/B testing, stakeholder
+          management; and technical skills in Python, JavaScript, SQL, prompt
+          engineering, and LLMs testing.
         </p>
       </div>
 
@@ -57,7 +57,7 @@ export default function AboutPage() {
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
           My Side Projects
         </h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-8">
+        <p className="text-gray-600 dark:text-gray-400 leading-8 mb-8">
           I did passion side projects in the weekend, please take a look you
           will love it (i hope).
         </p>

@@ -22,7 +22,7 @@ const Footer = () => {
   const [copied, setCopied] = useState(false);
 
   const copyEmail = async () => {
-    await navigator.clipboard.writeText("hello@example.com");
+    await navigator.clipboard.writeText("nvu.work@gmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -44,7 +44,7 @@ const Footer = () => {
             className="px-6 py-3 bg-gray-900 dark:bg-[#323232] hover:bg-black dark:hover:bg-[#3a3a3a] text-white dark:text-gray-200 text-sm font-medium rounded-xl transition-colors flex items-center gap-2"
           >
             <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-            Hire Me
+            Let's Talk
           </Link>
           <button
             onClick={copyEmail}

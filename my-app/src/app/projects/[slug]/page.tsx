@@ -1,5 +1,3 @@
-"use client";
-
 import ProjectCard from "@/components/ProjectCard";
 import {
   listProjects,
@@ -9,11 +7,11 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
-interface ProjectDetailPageProps {
-  params: {
-    slug: string;
-  };
-}
+type Params = Promise<{ slug: string }>;
+
+type ProjectDetailPageProps = {
+  params: Params;
+};
 
 const ProjectInfo = ({ project }: { project: ProjectDetailProps }) => {
   const info = [
@@ -41,8 +39,15 @@ const ProjectInfo = ({ project }: { project: ProjectDetailProps }) => {
   );
 };
 
-export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
-  const project = listProjectsDetail[0];
+export default async function ProjectDetailPage({
+  params,
+}: ProjectDetailPageProps) {
+  const { slug } = await params;
+  const project = listProjectsDetail.find((proj) => proj.slug === slug);
+
+  if (!project) {
+    return <p>Project not found.</p>;
+  }
 
   return (
     <section className="space-y-8">

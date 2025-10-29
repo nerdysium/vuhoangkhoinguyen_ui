@@ -195,7 +195,7 @@ export default function Header() {
             className="px-3 py-2 bg-gray-900 dark:bg-[#383838] hover:bg-black dark:hover:bg-[#424242] text-white text-xs md:text-sm font-semibold rounded-md transition-all shadow-sm flex items-center gap-1.5 md:gap-2"
           >
             <div className="size-1.5 md:size-2 bg-green-500 rounded-full" />
-            <span className="whitespace-nowrap">Hire Me</span>
+            <span className="whitespace-nowrap">Let's Talk</span>
           </Link>
         </div>
       </nav>

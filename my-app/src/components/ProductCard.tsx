@@ -11,6 +11,8 @@ const ProductCard = (props: ProductCardProps) => {
   return (
     <a
       href={props.link}
+      target="_blank"
+      rel="noopener noreferrer"
       className="flex items-start md:items-center justify-between gap-4 p-5 bg-white 
       dark:bg-[#252525] rounded-2xl transition-all 
       duration-300 group hover:shadow-[0_0_20px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_0_20px_rgba(255,255,255,0.12)]"
