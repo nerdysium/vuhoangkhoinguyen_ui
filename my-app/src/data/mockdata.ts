@@ -3,6 +3,7 @@ import { ProjectCardProps } from "@/components/ProjectCard";
 import IconTransfermarts from "@/assets/logo_transfermarts.svg";
 import IconImageIntern from "@/assets/logo_imageintern.svg";
 import IconPyra from "@/assets/logo_pyra.svg";
+import IconInfocus from "@/assets/logo_infocus.svg";
 
 export interface ProjectDetailProps extends ProjectCardProps {
   slug: string;
@@ -59,8 +60,7 @@ export const listProjectsDetail: ProjectDetailProps[] = [
     slug: "infocus",
     title: "InFocus.com",
     description: "Brand Website, Chatbot, CRM",
-    imageUrl:
-      "https://framerusercontent.com/images/GYZJhZwKqD1jeRCg4q155yCAVM.svg",
+    imageUrl: IconInfocus,
     link: "/projects/infocus",
     client: "Jeremy F.",
     company: "Maxnerva US",
@@ -69,7 +69,7 @@ export const listProjectsDetail: ProjectDetailProps[] = [
     fullDescription:
       "Beautiful and engaging landing page design with custom illustrations. Create memorable first impressions and drive conversions with stunning visuals.",
     websiteUrl: "https://infocus.com/",
-    logo: "https://framerusercontent.com/images/GYZJhZwKqD1jeRCg4q155yCAVM.svg",
+    logo: IconInfocus,
     screenshots: [
       "https://framerusercontent.com/images/bkIbqK8NrKE2IUX0Z2OrtRR5g.png",
     ],

@@ -6,6 +6,7 @@ import Link from "next/link";
 import ProjectCard from "./ProjectCard";
 import ProductCard from "./ProductCard";
 import { listProducts, listProjects } from "@/data/mockdata";
+import IconAvatar from "@/assets/img_avatar.jpg";
 
 export default function Hero() {
   const [copied, setCopied] = useState(false);
@@ -79,7 +80,7 @@ export default function Hero() {
           <div className="shrink-0">
             <div className="size-36 rounded-full bg-linear-to-br from-gray-100 to-gray-300 flex items-center justify-center overflow-hidden ring-4 ring-gray-100 dark:ring-[#323232]">
               <Image
-                src="https://cellphones.com.vn/sforum/wp-content/uploads/2024/02/anh-avatar-ngau-69.jpg"
+                src={IconAvatar}
                 alt="Avatar"
                 width={144}
                 height={144}

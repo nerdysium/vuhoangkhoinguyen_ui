@@ -1,6 +1,8 @@
 "use client";
 
 import ProductCard from "@/components/ProductCard";
+import IconAvatar from "@/assets/img_avatar.jpg";
+import Image from "next/image";
 import { listProducts } from "@/data/mockdata";
 
 export default function AboutPage() {
@@ -27,12 +29,14 @@ export default function AboutPage() {
             bridge business needs with technology, turning complex challenges
             into seamless solutions.
           </p>
-
-          <div className="bg-[#f5f5f5] dark:bg-[#1f1f1f] rounded-2xl overflow-hidden aspect-4/3">
-            <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-amber-200 to-orange-300">
-              <div className="text-8xl">👨‍💻</div>
-            </div>
-          </div>
+          <Image
+            src={IconAvatar}
+            alt="Nguyen Vu"
+            width={0}
+            height={0}
+            sizes="100vw"
+            className="w-full h-auto mt-6 rounded-xl"
+          />
         </div>
       </section>
 

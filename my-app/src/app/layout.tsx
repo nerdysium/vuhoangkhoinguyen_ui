@@ -13,7 +13,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Vu Hoang Khoi Nguyen - Product Manager Portfolio",
   description:
-    "Product manager from PPT Software, ID. Currently managing at Rectangle. Specializing in visual design, branding, and product design.",
+    "Product manager from FPT Software, ID. Currently managing at Rectangle. Specializing in visual design, branding, and product design.",
 };
 
 export default function RootLayout({
