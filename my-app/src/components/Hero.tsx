@@ -38,16 +38,16 @@ export default function Hero() {
         {/* Bottom Part */}
         <div className="w-full flex flex-col-reverse md:flex-row items-center justify-between gap-6 md:gap-0 mb-7 md:mb-0">
           <div className="flex-1">
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">
+            <h1 className="text-3xl text-center md:text-left font-bold text-gray-900 dark:text-white mb-3">
               Hello, I'm Nguyen
             </h1>
 
-            <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed text-base">
+            <p className="text-gray-600 dark:text-gray-400 text-center md:text-left mb-8 leading-relaxed text-base">
               A curious mind based in Saigon, Vietnam.
               <br />I will help you build things.
             </p>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center md:justify-start gap-3">
               <Link
                 href="/contact"
                 className="px-5 py-3 bg-gray-900 dark:bg-[#323232] hover:bg-black dark:hover:bg-[#3a3a3a] text-white dark:text-gray-200 text-sm font-medium rounded-xl transition-colors flex items-center gap-2"
