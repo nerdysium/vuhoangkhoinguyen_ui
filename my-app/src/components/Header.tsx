@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 const toggleTheme = () => {
   document.documentElement.classList.toggle("dark");
@@ -10,6 +11,10 @@ const toggleTheme = () => {
 export default function Header() {
   const pathname = usePathname();
   const isActive = (path: string) => pathname === path;
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [pathname]);
 
   return (
     <header className="fixed md:max-w-[560px] w-[calc(100%-16px)] md:w-full top-4 left-1/2 -translate-x-1/2 z-50">

@@ -1,8 +1,7 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
-import 'quill/dist/quill.snow.css';
+import { useState, useEffect, useRef } from "react";
+import "quill/dist/quill.snow.css";
 
 interface Blog {
   _id: string;
@@ -18,18 +17,17 @@ interface Blog {
 export default function BlogsTab() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(false);
-  const [uploading, setUploading] = useState(false);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
-  
+
   // Form state
   const [formData, setFormData] = useState({
-    title: '',
-    backgroundImage: '',
-    summary: '',
-    detail: '',
-    slug: '',
+    title: "",
+    backgroundImage: "",
+    summary: "",
+    detail: "",
+    slug: "",
   });
 
   const quillRef = useRef<HTMLDivElement>(null);
@@ -44,7 +42,7 @@ export default function BlogsTab() {
   useEffect(() => {
     const initQuill = async () => {
       if (quillRef.current && showForm) {
-        const Quill = (await import('quill')).default;
+        const Quill = (await import("quill")).default;
 
         // Destroy existing instance if it exists
         if (quillInstance.current) {
@@ -53,18 +51,18 @@ export default function BlogsTab() {
 
         // Create new instance
         quillInstance.current = new Quill(quillRef.current, {
-          theme: 'snow',
+          theme: "snow",
           modules: {
             toolbar: [
               [{ header: [1, 2, 3, false] }],
-              ['bold', 'italic', 'underline', 'strike'],
-              [{ list: 'ordered' }, { list: 'bullet' }],
+              ["bold", "italic", "underline", "strike"],
+              [{ list: "ordered" }, { list: "bullet" }],
               [{ color: [] }, { background: [] }],
-              ['link', 'image'],
-              ['clean'],
+              ["link", "image"],
+              ["clean"],
             ],
           },
-          placeholder: 'Write blog content here...',
+          placeholder: "Write blog content here...",
         });
 
         // Set initial content after a small delay to ensure Quill is fully initialized
@@ -75,7 +73,7 @@ export default function BlogsTab() {
         }, 100);
 
         // Listen for text changes
-        quillInstance.current.on('text-change', () => {
+        quillInstance.current.on("text-change", () => {
           if (quillInstance.current) {
             const html = quillInstance.current.root.innerHTML;
             setFormData((prev) => ({ ...prev, detail: html }));
@@ -91,7 +89,7 @@ export default function BlogsTab() {
     // Cleanup
     return () => {
       if (quillInstance.current) {
-        quillInstance.current.off('text-change');
+        quillInstance.current.off("text-change");
       }
       isQuillInitialized.current = false;
     };
@@ -99,23 +97,23 @@ export default function BlogsTab() {
 
   const fetchBlogs = async () => {
     try {
-      const response = await fetch('/api/blogs');
+      const response = await fetch("/api/blogs");
       const data = await response.json();
       if (data.success) {
         setBlogs(data.data);
       }
     } catch (err) {
-      console.error('Error fetching blogs:', err);
+      console.error("Error fetching blogs:", err);
     }
   };
 
   const generateSlug = (title: string) => {
     return title
       .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-+|-+$/g, '');
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
   };
 
   const handleInputChange = (
@@ -124,7 +122,7 @@ export default function BlogsTab() {
     const { name, value } = e.target;
 
     // Auto-generate slug from title
-    if (name === 'title' && !editingId) {
+    if (name === "title" && !editingId) {
       const newSlug = generateSlug(value);
       setFormData({
         ...formData,
@@ -139,59 +137,32 @@ export default function BlogsTab() {
     }
   };
 
-  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    setUploading(true);
-    const formDataUpload = new FormData();
-    formDataUpload.append('file', file);
-
-    try {
-      const response = await fetch('/api/upload', {
-        method: 'POST',
-        body: formDataUpload,
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setFormData({ ...formData, backgroundImage: data.url });
-        setMessage('Image uploaded successfully!');
-      }
-    } catch (error) {
-      setMessage('Error uploading image');
-    } finally {
-      setUploading(false);
-      setTimeout(() => setMessage(''), 3000);
-    }
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      const url = editingId ? `/api/blogs/${editingId}` : '/api/blogs';
-      const method = editingId ? 'PUT' : 'POST';
+      const url = editingId ? `/api/blogs/${editingId}` : "/api/blogs";
+      const method = editingId ? "PUT" : "POST";
 
       const response = await fetch(url, {
         method,
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        setMessage('Blog saved successfully!');
+        setMessage("Blog saved successfully!");
         setShowForm(false);
         setEditingId(null);
         setFormData({
-          title: '',
-          backgroundImage: '',
-          summary: '',
-          detail: '',
-          slug: '',
+          title: "",
+          backgroundImage: "",
+          summary: "",
+          detail: "",
+          slug: "",
         });
         fetchBlogs();
       } else {
@@ -199,10 +170,10 @@ export default function BlogsTab() {
         setMessage(`Error: ${error.error}`);
       }
     } catch (error) {
-      setMessage('Error saving blog');
+      setMessage("Error saving blog");
     } finally {
       setLoading(false);
-      setTimeout(() => setMessage(''), 3000);
+      setTimeout(() => setMessage(""), 3000);
     }
   };
 
@@ -219,33 +190,33 @@ export default function BlogsTab() {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this blog?')) return;
+    if (!confirm("Are you sure you want to delete this blog?")) return;
 
     try {
       const response = await fetch(`/api/blogs/${id}`, {
-        method: 'DELETE',
+        method: "DELETE",
       });
 
       if (response.ok) {
         fetchBlogs();
-        setMessage('Blog deleted successfully!');
+        setMessage("Blog deleted successfully!");
       }
     } catch (error) {
-      console.error('Error deleting blog:', error);
-      setMessage('Error deleting blog');
+      console.error("Error deleting blog:", error);
+      setMessage("Error deleting blog");
     } finally {
-      setTimeout(() => setMessage(''), 3000);
+      setTimeout(() => setMessage(""), 3000);
     }
   };
 
   const handleAdd = () => {
     setEditingId(null);
     setFormData({
-      title: '',
-      backgroundImage: '',
-      summary: '',
-      detail: '',
-      slug: '',
+      title: "",
+      backgroundImage: "",
+      summary: "",
+      detail: "",
+      slug: "",
     });
     setShowForm(true);
   };
@@ -254,11 +225,11 @@ export default function BlogsTab() {
     setShowForm(false);
     setEditingId(null);
     setFormData({
-      title: '',
-      backgroundImage: '',
-      summary: '',
-      detail: '',
-      slug: '',
+      title: "",
+      backgroundImage: "",
+      summary: "",
+      detail: "",
+      slug: "",
     });
   };
 
@@ -267,7 +238,7 @@ export default function BlogsTab() {
       <div className="space-y-6">
         <div className="flex justify-between items-center">
           <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-            {editingId ? 'Edit Blog' : 'Add New Blog'}
+            {editingId ? "Edit Blog" : "Add New Blog"}
           </h2>
           <button
             onClick={handleCancel}
@@ -280,9 +251,9 @@ export default function BlogsTab() {
         {message && (
           <div
             className={`p-4 rounded-lg ${
-              message.includes('Error')
-                ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
-                : 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+              message.includes("Error")
+                ? "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
+                : "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
             }`}
           >
             {message}
@@ -315,25 +286,14 @@ export default function BlogsTab() {
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Background Image *
             </label>
-            <div className="flex items-center gap-4">
-              {formData.backgroundImage && (
-                <img
-                  src={formData.backgroundImage}
-                  alt="Background"
-                  className="w-32 h-20 object-cover rounded"
-                />
-              )}
-              <label className="cursor-pointer px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:opacity-90">
-                {uploading ? 'Uploading...' : 'Upload Image'}
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                  className="hidden"
-                  disabled={uploading}
-                />
-              </label>
-            </div>
+            <input
+              type="text"
+              name="backgroundImage"
+              value={formData.backgroundImage}
+              onChange={handleInputChange}
+              required
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-[#1a1a1a] text-gray-900 dark:text-white"
+            />
           </div>
 
           {/* Summary */}
@@ -370,10 +330,10 @@ export default function BlogsTab() {
               className="flex-1 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50"
             >
               {loading
-                ? 'Saving...'
+                ? "Saving..."
                 : editingId
-                ? 'Update Blog'
-                : 'Create Blog'}
+                ? "Update Blog"
+                : "Create Blog"}
             </button>
             <button
               type="button"
@@ -393,9 +353,9 @@ export default function BlogsTab() {
       {message && (
         <div
           className={`p-4 rounded-lg ${
-            message.includes('Error')
-              ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
-              : 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+            message.includes("Error")
+              ? "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
+              : "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
           }`}
         >
           {message}
@@ -473,4 +433,3 @@ export default function BlogsTab() {
     </div>
   );
 }
-

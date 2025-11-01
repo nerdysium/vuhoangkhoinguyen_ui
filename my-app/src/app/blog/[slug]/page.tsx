@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
-import Image from 'next/image';
-import Link from 'next/link';
+import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
 
 interface Blog {
   _id: string;
@@ -20,7 +20,7 @@ export default function BlogDetailPage() {
   const slug = params.slug as string;
   const [blog, setBlog] = useState<Blog | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     fetchBlog();
@@ -28,21 +28,21 @@ export default function BlogDetailPage() {
 
   const fetchBlog = async () => {
     try {
-      const response = await fetch('/api/blogs');
+      const response = await fetch("/api/blogs");
       const data = await response.json();
       if (data.success) {
         const foundBlog = data.data.find((b: Blog) => b.slug === slug);
         if (foundBlog) {
           setBlog(foundBlog);
         } else {
-          setError('Blog not found');
+          setError("Blog not found");
         }
       } else {
-        setError('Failed to fetch blog');
+        setError("Failed to fetch blog");
       }
     } catch (err) {
-      console.error('Error fetching blog:', err);
-      setError('Error fetching blog');
+      console.error("Error fetching blog:", err);
+      setError("Error fetching blog");
     } finally {
       setLoading(false);
     }
@@ -52,7 +52,9 @@ export default function BlogDetailPage() {
     return (
       <section className="pt-5 bg-white dark:bg-[#252525] rounded-3xl mb-6">
         <div className="px-6 py-20 text-center">
-          <div className="text-xl text-gray-600 dark:text-gray-400">Loading...</div>
+          <div className="text-xl text-gray-600 dark:text-gray-400">
+            Loading...
+          </div>
         </div>
       </section>
     );
@@ -62,8 +64,13 @@ export default function BlogDetailPage() {
     return (
       <section className="pt-5 bg-white dark:bg-[#252525] rounded-3xl mb-6">
         <div className="px-6 py-20 text-center">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Blog Not Found</h1>
-          <Link href="/blog" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            Blog Not Found
+          </h1>
+          <Link
+            href="/blog"
+            className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
+          >
             ← Back to Blog
           </Link>
         </div>
@@ -113,32 +120,35 @@ export default function BlogDetailPage() {
           <div className="flex items-center gap-2 mb-4">
             <span className="w-2 h-2 bg-gray-400 dark:bg-gray-500 rounded-full"></span>
             <span className="text-sm text-gray-500 dark:text-gray-400">
-              {new Date(blog.createdAt).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
+              {new Date(blog.createdAt).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
               })}
             </span>
           </div>
-          
+
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
             {blog.title}
           </h1>
           <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-              {blog.summary}
-            </p>
+            {blog.summary}
+          </p>
         </div>
 
         <div className="border-t border-gray-200 dark:border-[#404040] pt-6">
-            <div 
-              className="prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-400"
-              dangerouslySetInnerHTML={{ 
-                __html: blog.detail.includes('&lt;') 
-                  ? blog.detail.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&')
-                  : blog.detail
-              }}
-            />
-          </div>
+          <div
+            className="prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-400"
+            dangerouslySetInnerHTML={{
+              __html: blog.detail.includes("&lt;")
+                ? blog.detail
+                    .replace(/&lt;/g, "<")
+                    .replace(/&gt;/g, ">")
+                    .replace(/&amp;/g, "&")
+                : blog.detail,
+            }}
+          />
+        </div>
 
         <div className="mt-8 flex justify-center">
           <Link
@@ -165,4 +175,3 @@ export default function BlogDetailPage() {
     </section>
   );
 }
-
