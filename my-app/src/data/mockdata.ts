@@ -13,7 +13,6 @@ export interface ProjectDetailProps extends ProjectCardProps {
   year: string;
   fullDescription: string;
   websiteUrl?: string;
-  screenshots: string[];
   logo?: string;
 }
 
@@ -29,13 +28,9 @@ export const listProjectsDetail: ProjectDetailProps[] = [
     projectType: "Design, Development",
     year: "2025",
     fullDescription:
-      "Enhance your company's workforce management with a cutting-edge website. Enjoy seamless user experience, efficient employee management, and a competitive edge.",
+      "Sophisticated branding website for luxury scent products. Immerse in a world of crafted fragrances, car fresheners, and curated gifts featuring IFRA certified imported oils that are safe, sustainable, and designed to elevate everyday moments with elegance and exclusivity.",
     websiteUrl: "http://pyralifestyle.com/",
     logo: IconPyra,
-    screenshots: [
-      "https://framerusercontent.com/images/bkIbqK8NrKE2IUX0Z2OrtRR5g.png",
-      "https://framerusercontent.com/images/lbQBycfSu2aE5kvANYnZQDTag.svg",
-    ],
   },
   {
     slug: "projectors",
@@ -49,12 +44,9 @@ export const listProjectsDetail: ProjectDetailProps[] = [
     projectType: "Consult, Design, Development, Operation",
     year: "2024",
     fullDescription:
-      "A comprehensive product design system that brings consistency and efficiency to your digital products. Modern, scalable, and user-friendly.",
+      "User-friendly e-commerce platform specializing in high-quality projectors. Shop a diverse range of portable, outdoor, and home models with intuitive search, advanced filters, sorting options, and refurbished deals, designed to help you find and purchase the ideal projector for any setting effortlessly.",
     websiteUrl: "https://projectors.com",
     logo: "https://framerusercontent.com/images/lkLwoc5QonpfJtmxeyujVtespnI.svg",
-    screenshots: [
-      "https://framerusercontent.com/images/bkIbqK8NrKE2IUX0Z2OrtRR5g.png",
-    ],
   },
   {
     slug: "infocus",
@@ -67,12 +59,9 @@ export const listProjectsDetail: ProjectDetailProps[] = [
     projectType: "Consult, Design, Development, Operation",
     year: "2024=0",
     fullDescription:
-      "Beautiful and engaging landing page design with custom illustrations. Create memorable first impressions and drive conversions with stunning visuals.",
+      "Dynamic brand website dedicated to advanced visual technologies. Explore comprehensive product details, specifications, documentation, and support resources for projectors, interactive flat panels, and DVLED displays—tailored for commercial, educational, and home environments to deliver unforgettable experiences.",
     websiteUrl: "https://infocus.com/",
     logo: IconInfocus,
-    screenshots: [
-      "https://framerusercontent.com/images/bkIbqK8NrKE2IUX0Z2OrtRR5g.png",
-    ],
   },
 ];
 

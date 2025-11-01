@@ -109,7 +109,12 @@ const Footer = () => {
         <p>© 2025 vuhoangkhoinguyen – Saigon Science</p>
         <p className="mt-1">
           by{" "}
-          <a href="#" className="underline ">
+          <a
+            href="https://www.facebook.com/anhkhoistqn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline "
+          >
             Andy Koi
           </a>{" "}
           //{" "}
