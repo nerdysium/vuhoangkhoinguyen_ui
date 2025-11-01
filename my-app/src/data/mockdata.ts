@@ -57,7 +57,7 @@ export const listProjectsDetail: ProjectDetailProps[] = [
     client: "Jeremy F.",
     company: "Maxnerva US",
     projectType: "Consult, Design, Development, Operation",
-    year: "2024=0",
+    year: "2024",
     fullDescription:
       "Dynamic brand website dedicated to advanced visual technologies. Explore comprehensive product details, specifications, documentation, and support resources for projectors, interactive flat panels, and DVLED displays—tailored for commercial, educational, and home environments to deliver unforgettable experiences.",
     websiteUrl: "https://infocus.com/",
