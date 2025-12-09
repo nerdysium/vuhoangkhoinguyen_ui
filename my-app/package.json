@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@next/third-parties": "^16.0.8",
     "mongoose": "^8.19.2",
     "next": "16.0.0",
     "quill": "^2.0.3",
